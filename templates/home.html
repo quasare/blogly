@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block title %}Blogly{% endblock %}
+{% block content %}
+<div class="container text-center">
+    <h1>Blogly</h1>
+    <h3 class="mb-2">Most recent Post</h3>
+    <ol>
+        {% for p in post %}
+        <h4 class="display-5"> <a href="/posts/{{p.id}}" "> {{p.title}}</a> </h4>
+             <p class='font-weight-lighter font-italic'> By {{p.User.first_name}}
+                {{p.User.last_name}} on {{p.created_at.strftime('%c')}}</p>
+         <p>
+                    <span>Tags: </span>
+                    {% for t in p.tags%}
+                    <span class=" text-white px-1 font-weight-lighter bg-primary rounded">{{t.tag_name}}</span>
+                {%endfor%}
+                </p>
+                {% endfor %}
+    </ol>
+</div>
+{% endblock %}

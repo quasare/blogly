@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+<div class="container mt-5  text-center bg-light pb-2">
+    <h3 class="display-3">{{post.title}}</h3>
+    <p class="display-5">{{post.content}}</p>
+    <p>
+        <span class='font-weight-lighter font-italic'>Posted by</span>
+        <a href="/user/{{post.user_id}}" class='font-weight-lighter font-italic'> {{post.User.first_name}}
+            {{post.User.last_name}}</a>
+    </p>
+    <p>
+        <span>Tags: </span>
+        {% for t in post.tags%}
+        <span class="text-white px-1 font-weight-lighter bg-primary rounded">{{t.tag_name}}</span>
+        {%endfor%}
+    </p>
+    <a href="/" class="btn btn-secondary">Back</a>
+    <a href="/posts/{{post.id}}/edit" class="btn btn-primary">Edit</a>
+    <a href="/posts/{{post.id}}/delete" class="btn btn-danger">Delete</a>
+</div>
+{% endblock%}

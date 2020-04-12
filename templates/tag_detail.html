@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block title %}Tag Detail{% endblock %}
+{% block content %}
+<div class="container mt-5  text-center">
+    <h3 class="display-3 mb-5">{{tag.tag_name}}</h3>
+    <ul>
+        {% for t in tag.post_tag %}
+        <li class="py-2"><a href="/posts/{{t.id}}" class="link-item">{{t.title}}</a></li>
+        {% endfor %}
+    </ul>
+    <form>
+        <a href="/tags" class="btn btn-secondary">Back</a>
+        <a href="/tags/{{tag.id}}/edit" class="btn btn-primary">Edit</a>
+        <button formaction="/tags/{{tag.id}}/delete" formmethod="POST" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+{% endblock %}

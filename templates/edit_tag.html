@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block title %}Edit Tag{% endblock %}
+{% block content %}
+<div class="container mt-5 bg-dark py-3 text-white text-center">
+    <h3 class="display-5">Edit Tag</h3>
+    <form action="/tags/{{tag.id}}/edit" method="post">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"> Name </span>
+            </div>
+            <input value="{{tag.tag_name}}" type="text" class="form-control" name="tag_name">
+        </div>
+        <a href="/tags/{{tag.id}}" class="btn btn-danger mt-2">Cancel</a>
+        <button class="btn btn-success mt-2" type="submit">Edit</button>
+
+    </form>
+</div>
+{% endblock %}
